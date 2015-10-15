@@ -1,0 +1,25 @@
+name        : antiword
+version     : 0.37
+release     : 3
+source      :
+    - http://www.winfield.demon.nl/linux/antiword-0.37.tar.gz : 8e2c000fcbc6d641b0e6ff95e13c846da3ff31097801e86702124a206888f5ac
+homepage    : http://www.winfield.demon.nl
+license     :
+    - GPLv2
+summary     : Command Line MS Word reader
+description : |
+    Antiword is a command line program for reading MS Word documents and outputting plaintext, allowing them to be processed further using utilities such as grep or diff.
+setup      : |
+    # Patch by Adrian Reber <adrian@lisas.de> @ http://pkgs.fedoraproject.org/cgit/antiword.git/commit/?id=6d3ae147c4a5dba738d822dc0b2fa48c50b3e74b
+    %patch -p1 < $pkgfiles/CVE-2014-8123.patch
+build      : |
+    %make
+install    : |
+    mkdir -p %installroot%/usr/bin
+    mkdir -p %installroot%/usr/share/antiword
+    mkdir -p %installroot%/usr/share/doc/antiword
+    mkdir -p %installroot%/usr/share/man/man1
+    cp antiword %installroot%/usr/bin/
+    cp -r Resources/* %installroot%/usr/share/antiword/
+    mv  Docs/antiword.1 %installroot%/usr/share/man/man1/
+    cp -r Docs/{COPYING,ChangeLog,ReadMe} %installroot%/usr/share/doc/antiword/
