@@ -11,7 +11,7 @@ description : |
     Antiword is a command line program for reading MS Word documents and outputting plaintext, allowing them to be processed further using utilities such as grep or diff.
 setup      : |
     # Patch by Adrian Reber <adrian@lisas.de> @ http://pkgs.fedoraproject.org/cgit/antiword.git/commit/?id=6d3ae147c4a5dba738d822dc0b2fa48c50b3e74b
-    %patch -p1 < $pkgfiles/CVE-2014-8123.patch
+    %patch -p1 < $pkgfiles/security/CVE-2014-8123.patch
 build      : |
     %make
 install    : |
